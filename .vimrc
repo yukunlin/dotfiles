@@ -206,7 +206,6 @@ nnoremap <F9>  :TagbarToggle   <CR>
 nnoremap <F8>  :NERDTreeToggle <CR>
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bpreviou<CR>
-nnoremap <C-n> :tabnew<CR>
 nnoremap <C-S> :call StripTrailingWhitespace() <CR>
 nnoremap <leader>w :w <CR>
 nnoremap <leader>x :bp\|bd #
