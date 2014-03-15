@@ -1,4 +1,4 @@
-" vundle package manager
+"{{{ vundle package manager
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -26,6 +26,12 @@ Bundle 'yukunlin/vim-move.git'
 Bundle 'justinmk/vim-syntax-extra.git'
 Bundle 'dag/vim2hs.git'
 Bundle 'Shougo/vimproc.vim.git'
+"}}}
+
+" vim settings {{{
+
+" set manual fold for vimrc
+autocmd bufread .vimrc setlocal foldmethod=marker
 
 " re-map leader key
 let mapleader=" "
@@ -92,6 +98,11 @@ if has ("gui_macvim")
     set transparency=10
 endif
 
+" custom indent for tex and system verilog
+autocmd FileType tex source ~/.vim/tex.vim
+autocmd FileType systemverilog source ~/.vim/sv.vim
+"}}}
+
 " map c-j and c-k to move lines up and down
 let g:move_key_modifier ='C'
 let g:move_select_mode = 0
@@ -107,23 +118,24 @@ let g:jedi#auto_vim_configuration = 0
 " ultisnips settings
 let g:UltiSnipsExpandTrigger = '<c-space>'
 
-" taglist settings
+" taglist settings {{{
 let Tlist_WinWidth = 30
 let g:tagbar_sort = 0
 let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_foldlevel = 99
+"}}}
 
-" airline setting
+" airline setting {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
-"let g:airline#extensions#ctrlp#show_adjacent_modes = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#show_tab_nr = 0
 set laststatus=2
 set timeoutlen=1000 ttimeoutlen=10
+" }}}
 
-" autopairs setting
+" autopairs setting {{{
 let g:AutoPairsShortcutJump='<C-f>'
 let g:AutoPairsShortcutFastWrap='<C-e>'
 let g:AutoPairsShortcutBackInsert='<C-b>'
@@ -133,22 +145,25 @@ let g:AutoPairsNormalJump=0
 " toggle autopair settings when entering tex file
 autocmd BufEnter *.tex let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 autocmd BufLeave *.tex let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+"}}}
 
-autocmd BufEnter *.hs nnoremap <leader>t :CtrlPTag <CR>
-autocmd BufLeave *.hs nnoremap <leader>t :CtrlPBufTag <CR>
-
-" ctrlp settings
+" ctrlp settings {{{
 nnoremap <leader>f :CtrlP .<CR>
 nnoremap <leader>d :CtrlP
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>t :CtrlPBufTag<CR>
 nnoremap <leader>r :CtrlPMRU<CR>
 nnoremap <leader>m :CtrlPMRU<CR>
+
+autocmd BufEnter *.hs nnoremap <leader>t :CtrlPTag <CR>
+autocmd BufLeave *.hs nnoremap <leader>t :CtrlPBufTag <CR>
+
 let g:ctrlp_max_depth = 3
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_prompt_mappings = { 'PrtCurLeft()': ['<left>', '<c-^>']  }
+"}}}
 
-" easytags settings
+" easytags settings {{{
 let g:easytags_updatetime_min=5000
 let g:easytags_updatetime_warn=0
 set tags=./.tags
@@ -167,8 +182,9 @@ autocmd bufread,bufnewfile *.hs silent! !touch .tags
 autocmd bufread,bufnewfile *.cpp,*.hpp,*.c,*.py,*.java,*.cs,*.asp,*.awk,*.hs,
                           \*.erl,*.hrl,*.sh,*.rb,*.scm,*.ss,*.php,*.pl,*.vim,.vimrc,MakeFile
                           \silent! UpdateTags
+"}}}
 
-" vim_latex settings
+" vim_latex settings {{{
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode $*'
@@ -180,15 +196,12 @@ let g:Tex_ShowErrorContext = 0
 let g:Tex_FoldedEnvironments="verbatim,Verbatim,comment,eq,gather,align,align*,equation*,figure,table,thebibliography,keywords,abstract,titlepage,algorithm"
 imap <c-k> <Plug>IMAP_JumpBack
 smap <c-k> <Plug>IMAP_JumpBack
-autocmd FileType tex source ~/.vim/tex.vim
-
-" custom indent for
-autocmd FileType systemverilog source ~/.vim/sv.vim
+"}}}
 
 " vim2hs settings
 let g:haskell_conceal = 0
 
-" custom key mappings
+" custom key mappings {{{
 nnoremap <F9>  :TagbarToggle   <CR>
 nnoremap <F8>  :NERDTreeToggle <CR>
 nnoremap <C-l> :bnext<CR>
@@ -207,7 +220,9 @@ nnoremap <leader>k O<Esc>j
 " mapping for splits
 nnoremap <leader>s :split<Cr>
 nnoremap <leader>v :vsplit<Cr>
+"}}}
 
+" custom fuctions {{{
 function StripTrailingWhitespace()
   if !&binary && &filetype != 'diff'
     normal mz
@@ -217,3 +232,4 @@ function StripTrailingWhitespace()
     normal `z
   endif
 endfunction
+"}}}
