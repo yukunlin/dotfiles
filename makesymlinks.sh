@@ -38,4 +38,4 @@ git submodule update
 printf "done\n\n"
 
 printf "Cloning into oh-my-zsh\n"
-git clone http://github.com/michaeljsmalley/oh-my-zsh.git ~/.oh-my-zsh
+git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
