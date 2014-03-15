@@ -27,7 +27,12 @@ for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    ln -s $dir/.$file ~/.$file
 done
 
-git clone http://github.com/michaeljsmalley/oh-my-zsh.git
+# initalize vundle submodule
+cd $dir
+git submodule init
+git submodule update
+
+git clone http://github.com/michaeljsmalley/oh-my-zsh.git ~/.oh-my-zsh
