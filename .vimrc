@@ -6,7 +6,6 @@ Bundle 'gmarik/vundle'
 Bundle 'yukunlin/auto-pairs.git'
 Bundle 'octol/vim-cpp-enhanced-highlight.git'
 Bundle 'kien/ctrlp.vim.git'
-Bundle 'eagletmt/ghcmod-vim.git'
 Bundle 'davidhalter/jedi-vim.git'
 Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 Bundle 'bitc/lushtags.git'
@@ -168,18 +167,7 @@ let g:easytags_updatetime_min=5000
 let g:easytags_updatetime_warn=0
 set tags=./.tags
 let g:easytags_dynamic_files = 2
-let g:easytags_languages = {
-\   'haskell': {
-\     'cmd': 'hasktags',
-\       'args': [],
-\       'fileoutput_opt': '-f',
-\       'stdout_opt': '-f-',
-\       'recurse_flag': '-R'
-\   }
-\}
-" hack because dynamic_files = 2 doesn't seem to work for haskell files
-autocmd bufread,bufnewfile *.hs silent! !touch .tags
-autocmd bufread,bufnewfile *.cpp,*.hpp,*.c,*.py,*.java,*.cs,*.asp,*.awk,*.hs,
+autocmd bufread,bufnewfile *.cpp,*.hpp,*.c,*.py,*.java,*.cs,*.asp,*.awk,
                           \*.erl,*.hrl,*.sh,*.rb,*.scm,*.ss,*.php,*.pl,*.vim,.vimrc,MakeFile
                           \silent! UpdateTags
 "}}}
