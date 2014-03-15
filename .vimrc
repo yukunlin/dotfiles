@@ -1,5 +1,31 @@
-" jall pathogen package manager
-execute pathogen#infect()
+" vundle package manager
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'yukunlin/auto-pairs.git'
+Bundle 'octol/vim-cpp-enhanced-highlight.git'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'eagletmt/ghcmod-vim.git'
+Bundle 'davidhalter/jedi-vim.git'
+Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
+Bundle 'bitc/lushtags.git'
+Bundle 'terryma/vim-multiple-cursors.git'
+Bundle 'eagletmt/neco-ghc.git'
+Bundle 'scrooloose/nerdtree.git'
+Bundle 'tpope/vim-repeat.git'
+Bundle 'ervandew/supertab.git'
+Bundle 'tpope/vim-surround.git'
+Bundle 'nachumk/systemverilog.vim.git'
+Bundle 'majutsushi/tagbar.git'
+Bundle 'SirVer/ultisnips.git'
+Bundle 'bling/vim-airline.git'
+Bundle 'xolox/vim-easytags.git'
+Bundle 'xolox/vim-misc.git'
+Bundle 'yukunlin/vim-move.git'
+Bundle 'justinmk/vim-syntax-extra.git'
+Bundle 'dag/vim2hs.git'
+Bundle 'Shougo/vimproc.vim.git'
 
 " re-map leader key
 let mapleader=" "
