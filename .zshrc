@@ -61,7 +61,7 @@ alias wilkes='ssh ylin@wilkes.cs.hmc.edu'
 alias cortana='ssh ylin@cortana.cs.hmc.edu'
 alias lair='ssh hmclair@lair.dreamhosters.com'
 alias prolog='/opt/local/bin/swipl'
-alias ls='ls --color=always'
+alias ls='ls -G'
 alias gvim='mvim'
 alias downloads='cd ~/Downloads/'
 alias updatedb='sudo /usr/libexec/locate.updatedb'
@@ -75,6 +75,7 @@ alias math='/Applications/Mathematica.app/Contents/MacOS/MathKernel'
 alias mv='nocorrect mv'
 alias cp='nocorrect cp'
 alias rm='nocorrect rm'
+alias which='nocorrect which'
 # Aliases with paramenters
 dropbox() {cd ~/Dropbox/"$*"; }
 hmc() {cd ~/Dropbox/Mudd/Spring\ 2014/"$*"; }
