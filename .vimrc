@@ -179,9 +179,6 @@ let g:easytags_languages = {
 \}
 " hack because dynamic_files = 2 doesn't seem to work for haskell files
 autocmd bufread,bufnewfile *.hs silent! !touch .tags
-autocmd bufread,bufnewfile *.cpp,*.hpp,*.c,*.py,*.java,*.cs,*.asp,*.awk,*.hs,
-                          \*.erl,*.hrl,*.sh,*.rb,*.scm,*.ss,*.php,*.pl,*.vim,.vimrc,MakeFile
-                          \silent! UpdateTags
 "}}}
 
 " vim_latex settings {{{
