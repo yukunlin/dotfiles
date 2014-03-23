@@ -167,9 +167,8 @@ let g:easytags_updatetime_min=5000
 let g:easytags_updatetime_warn=0
 set tags=./.tags
 let g:easytags_dynamic_files = 2
-autocmd bufread,bufnewfile *.cpp,*.hpp,*.c,*.py,*.java,*.cs,*.asp,*.awk,
-                          \*.erl,*.hrl,*.sh,*.rb,*.scm,*.ss,*.php,*.pl,*.vim,.vimrc,MakeFile
-                          \silent! UpdateTags
+" hack because dynamic_files = 2 doesn't seem to work for haskell files
+autocmd bufread,bufnewfile *.hs silent! !touch .tags
 "}}}
 
 " vim_latex settings {{{
