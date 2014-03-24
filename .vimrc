@@ -1,6 +1,4 @@
 "{{{ vundle package manager
-set nocompatible
-filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -26,6 +24,7 @@ Bundle 'xolox/vim-misc.git'
 Bundle 'yukunlin/vim-move.git'
 Bundle 'justinmk/vim-syntax-extra.git'
 Bundle 'dag/vim2hs.git'
+Bundle 'Shougo/vimproc.vim.git'
 "}}}
 
 " vim settings {{{
@@ -37,6 +36,7 @@ autocmd bufread .vimrc setlocal foldmethod=marker
 let mapleader=" "
 
 " gets rid of some historical baggage
+set nocompatible
 set vb t_vb=
 
 "filetype indent on
