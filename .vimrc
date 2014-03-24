@@ -83,8 +83,6 @@ set nowrap
 set omnifunc=syntaxcomplete#Complete
 set ofu=syntaxcomplete#Complete
 set completeopt=menuone,longest
-autocmd FileType c setlocal tags+=~/.vim/tags/cpp
-autocmd FileType cpp setlocal tags+=~/.vim/tags/cpp
 autocmd Filetype haskell setlocal omnifunc=necoghc#omnifunc
 
 " GUI options
