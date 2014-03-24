@@ -1,4 +1,6 @@
 "{{{ vundle package manager
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -6,6 +8,7 @@ Bundle 'gmarik/vundle'
 Bundle 'yukunlin/auto-pairs.git'
 Bundle 'octol/vim-cpp-enhanced-highlight.git'
 Bundle 'kien/ctrlp.vim.git'
+Bundle 'eagletmt/ghcmod-vim.git'
 Bundle 'davidhalter/jedi-vim.git'
 Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 Bundle 'bitc/lushtags.git'
@@ -36,7 +39,6 @@ autocmd bufread .vimrc setlocal foldmethod=marker
 let mapleader=" "
 
 " gets rid of some historical baggage
-set nocompatible
 set vb t_vb=
 
 "filetype indent on
@@ -83,6 +85,8 @@ set nowrap
 set omnifunc=syntaxcomplete#Complete
 set ofu=syntaxcomplete#Complete
 set completeopt=menuone,longest
+autocmd FileType c setlocal tags+=~/.vim/tags/cpp
+autocmd FileType cpp setlocal tags+=~/.vim/tags/cpp
 autocmd Filetype haskell setlocal omnifunc=necoghc#omnifunc
 
 " GUI options
@@ -165,6 +169,15 @@ let g:easytags_updatetime_min=5000
 let g:easytags_updatetime_warn=0
 set tags=./.tags
 let g:easytags_dynamic_files = 2
+let g:easytags_languages = {
+\   'haskell': {
+\     'cmd': 'hasktags',
+\       'args': [],
+\       'fileoutput_opt': '-f',
+\       'stdout_opt': '-f-',
+\       'recurse_flag': '-R'
+\   }
+\}
 " hack because dynamic_files = 2 doesn't seem to work for haskell files
 autocmd bufread,bufnewfile *.hs silent! !touch .tags
 "}}}
