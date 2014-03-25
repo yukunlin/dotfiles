@@ -16,9 +16,6 @@ DISABLE_AUTO_UPDATE="true"
 # Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
 
-# Uncomment following line if you want to disable autosetting terminal title.
-DISABLE_AUTO_TITLE="true"
-
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
@@ -67,47 +64,7 @@ alias mv='nocorrect mv'
 alias cp='nocorrect cp'
 alias rm='nocorrect rm'
 alias which='nocorrect which'
-# Aliases with paramenters
-dropbox() {cd ~/Dropbox/"$*"; }
-hmc() {cd ~/Dropbox/Mudd/Spring\ 2014/"$*"; }
 
 setopt nobeep
 setopt noclobber
 setopt correctall
-
-# Resume in open diretory
-if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
-
-    update_terminal_cwd() {
-        # Identify the directory using a "file:" scheme URL, including
-        # the host name to disambiguate local vs. remote paths.
-
-        # Percent-encode the pathname.
-        local URL_PATH=''
-        {
-            # Use LANG=C to process text byte-by-byte.
-            local i ch hexch LANG=C
-            for ((i = 1; i <= ${#PWD}; ++i)); do
-                ch="$PWD[i]"
-                if [[ "$ch" =~ [/._~A-Za-z0-9-] ]]; then
-                    URL_PATH+="$ch"
-                else
-                    hexch=$(printf "%02X" "'$ch")
-                    URL_PATH+="%$hexch"
-                fi
-            done
-        }
-
-        local PWD_URL="file://$HOST$URL_PATH"
-        #echo "$PWD_URL"        # testing
-        printf '\e]7;%s\a' "$PWD_URL"
-    }
-
-    # Register the function so it is called whenever the working
-    # directory changes.
-    autoload add-zsh-hook
-    add-zsh-hook chpwd update_terminal_cwd
-
-    # Tell the terminal about the initial directory.
-    update_terminal_cwd
-fi
