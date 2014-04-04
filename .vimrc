@@ -8,7 +8,6 @@ Bundle 'gmarik/vundle'
 Bundle 'yukunlin/auto-pairs.git'
 Bundle 'octol/vim-cpp-enhanced-highlight.git'
 Bundle 'kien/ctrlp.vim.git'
-Bundle 'eagletmt/ghcmod-vim.git'
 Bundle 'davidhalter/jedi-vim.git'
 Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 Bundle 'terryma/vim-multiple-cursors.git'
@@ -27,8 +26,8 @@ Bundle 'xolox/vim-misc.git'
 Bundle 'yukunlin/vim-move.git'
 Bundle 'justinmk/vim-syntax-extra.git'
 Bundle 'dag/vim2hs.git'
-Bundle 'Shougo/vimproc.vim.git'
 Bundle 'nosami/Omnisharp.git'
+Bundle 'Shougo/vimproc.vim'
 Bundle 'alisdair/vim-armasm.git'
 "}}}
 
@@ -109,9 +108,13 @@ autocmd FileType systemverilog source ~/.vim/sv.vim
 let g:move_key_modifier ='C'
 let g:move_select_mode = 0
 
-" supertab settings
+" supertab setting {{{
 let g:SuperTabDefaultCompletionType = '<c-n>'
+autocmd BufEnter *.hs,*.py,*.cs let g:SuperTabDefaultCompletionType = "context"
+autocmd BufLeave *.hs,*.py,*.cs let g:SuperTabDefaultCompletionType = '<c-n>'
+let g:SuperTabContextDefaultCompletionType='<c-n>'
 let g:SuperTabLongestHighlight = 1
+" }}}
 
 " jedi settings
 let g:jedi#popup_on_dot = 0
