@@ -29,6 +29,7 @@ Bundle 'dag/vim2hs.git'
 Bundle 'nosami/Omnisharp.git'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'alisdair/vim-armasm.git'
+Bundle 'altercation/vim-colors-solarized.git'
 "}}}
 
 " vim settings {{{
@@ -46,7 +47,9 @@ set vb t_vb=
 filetype plugin indent on
 
 " Set colors
-colorscheme ir_black
+set background=dark
+let g:solarized_contrast="high"
+colorscheme solarized
 syntax on
 
 " Don't show mode which is handled by airline
@@ -95,9 +98,6 @@ set guioptions-=r
 set guifont=Inconsolata\ for\ Powerline:h18
 set guioptions-=T
 set guioptions-=L
-if has ("gui_macvim")
-    set transparency=10
-endif
 
 " custom indent for tex and system verilog
 autocmd FileType tex source ~/.vim/tex.vim
