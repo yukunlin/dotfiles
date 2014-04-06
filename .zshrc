@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="candy"
+ZSH_THEME="colorful"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -31,8 +31,8 @@ plugins=(git z osx macports)
 source $ZSH/oh-my-zsh.sh
 
 # Case insensitive completion
-autoload -U compinit
-compinit -d ~/.zcompdump_`uname -s`
+# autoload -U compinit
+# compinit -d ~/.zcompdump_`uname -s`
 
 zstyle ':completion:*:processes' command 'ps -au$USER'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;32'
