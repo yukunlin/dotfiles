@@ -11,7 +11,7 @@ ZSH_THEME="candy"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="false"
 
 # Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
@@ -60,7 +60,6 @@ alias pex='ssh ylin@pex.math.hmc.edu'
 alias wilkes='ssh ylin@wilkes.cs.hmc.edu'
 alias cortana='ssh ylin@cortana.cs.hmc.edu'
 alias lair='ssh hmclair@lair.dreamhosters.com'
-alias prolog='/opt/local/bin/swipl'
 alias ls='ls --color=always'
 alias cleantex='rm *.aux; rm *.log; rm *.pdfsync'
 alias mv='nocorrect mv'
