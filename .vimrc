@@ -177,6 +177,27 @@ let g:tagbar_type_armasm = {
         \ 'l:labels:0:1'
     \ ]
 \}
+
+let g:tagbar_type_systemverilog = {
+    \ 'ctagsbin'  : 'ctags',
+    \ 'ctagsargs' : '-f- --format=2 --excmd=pattern --fields=nksSa --extra= --sort=no --languages=systemverilog',
+    \ 'kinds' : [
+        \ 'e:typedef:0:1',
+        \ 'i:interface:0:1',
+        \ 'c:class:0:1',
+        \ 'f:functions:0:1',
+        \ 'm:module:0:1',
+        \ 'p:program:0:1',
+        \ 't:task:0:1'
+    \ ],
+    \ 'sro'        : '.',
+    \ 'kind2scope' : {
+        \ 'e' : 'typedef'
+    \ },
+    \ 'scope2kind' : {
+        \ 'typedef'   : 'e'
+    \ }
+\}
 "}}}
 
 " airline setting {{{
@@ -214,7 +235,8 @@ let g:ctrlp_extensions = ['tag']
 let g:ctrlp_prompt_mappings = { 'PrtCurLeft()': ['<left>', '<c-^>']  }
 
 let g:ctrlp_buftag_types = {
-    \ 'armasm'     : '--language-force=asm',
+    \ 'armasm'        : '--language-force=asm',
+    \ 'systemverilog' : '--language=systemverilog',
     \ 'haskell' : {
     \ 'bin': 'hasktags',
     \ 'args': '-c -x -o-',
