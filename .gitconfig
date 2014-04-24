@@ -1,0 +1,14 @@
+[user]
+	name = Yukun Lin
+	email = me@yukun.io
+[push]
+	default = simple
+[branch]
+	autosetuprebase = always
+[color]
+	status = auto
+	branch = auto
+	ui = true
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vim
