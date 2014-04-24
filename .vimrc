@@ -30,9 +30,13 @@ Bundle 'nosami/Omnisharp.git'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'alisdair/vim-armasm.git'
 Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'yukunlin/Vim-R-plugin.git'
+Bundle 'Rip-Rip/clang_complete.git'
+Bundle 'jnwhiteh/vim-golang.git'
 "}}}
 
 " vim settings {{{
+set t_RV=
 
 " set manual fold for vimrc
 autocmd bufread .vimrc setlocal foldmethod=marker
@@ -104,21 +108,27 @@ autocmd FileType tex source ~/.vim/tex.vim
 autocmd FileType systemverilog source ~/.vim/sv.vim
 "}}}
 
-" map c-j and c-k to move lines up and down
+" Vim-R setting, when not in tmux
+let vimrplugin_term = "xterm"
+
+" map c-j and c-k to move lines up and down {{{ 
 let g:move_key_modifier ='C'
 let g:move_select_mode = 0
+" }}}
 
 " supertab setting {{{
 let g:SuperTabDefaultCompletionType = '<c-n>'
-autocmd BufEnter *.hs,*.py,*.cs let g:SuperTabDefaultCompletionType = "context"
-autocmd BufLeave *.hs,*.py,*.cs let g:SuperTabDefaultCompletionType = '<c-n>'
 let g:SuperTabContextDefaultCompletionType='<c-n>'
+"autocmd BufEnter *.hs,*.py,*.cs,*.c,*.cpp let g:SuperTabDefaultCompletionType = "context"
+"autocmd BufLeave *.hs,*.py,*.cs,*.c,*.cpp let g:SuperTabDefaultCompletionType = '<c-n>'
 let g:SuperTabLongestHighlight = 1
+let g:SuperTabLongestEnhanced=1
 " }}}
 
-" jedi settings
+" jedi settings {{{
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_vim_configuration = 0
+" }}}
 
 " ultisnips settings
 let g:UltiSnipsExpandTrigger = '<c-space>'
@@ -126,6 +136,15 @@ let g:UltiSnipsExpandTrigger = '<c-space>'
 " set assembly type to ARM
 let asmsyntax='armasm'
 let filetype_inc='armasm'
+
+" clang_complete settings {{{
+let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+if isdirectory(s:clang_library_path)
+        let g:clang_library_path=s:clang_library_path
+endif
+let g:clang_complete_auto=0
+let g:clang_auto_select=1
+" }}}
 
 " taglist settings {{{
 let Tlist_WinWidth = 30

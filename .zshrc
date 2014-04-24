@@ -30,26 +30,10 @@ plugins=(git z osx macports)
 
 source $ZSH/oh-my-zsh.sh
 
-# Case insensitive completion
-# autoload -U compinit
-# compinit -d ~/.zcompdump_`uname -s`
-
-zstyle ':completion:*:processes' command 'ps -au$USER'
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;32'
-zstyle ':completion:*:processes-names' command 'ps -e -o comm='
-
-# History settings
-HISTSIZE=10000
-setopt inc_append_history
-setopt share_history
-setopt hist_ignore_dups
-
-HISTFILE=~/.history
-SAVEHIST=10000
-
-# SVN editor settings
 export SVN_EDITOR=vim
 
+# History settings
+HISTFILE=~/.history
 # Aliases
 alias knuth='ssh ylin@knuth.cs.hmc.edu'
 alias mounthex='sshfs ylin@hex.math.hmc.edu:/home/students/hmc_2015/ylin /hex/ -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=hex'
@@ -60,10 +44,7 @@ alias pex='ssh ylin@pex.math.hmc.edu'
 alias wilkes='ssh ylin@wilkes.cs.hmc.edu'
 alias cortana='ssh ylin@cortana.cs.hmc.edu'
 alias lair='ssh hmclair@lair.dreamhosters.com'
-alias prolog='/opt/local/bin/swipl'
 alias ls='ls -G'
-alias gvim='mvim'
-alias downloads='cd ~/Downloads/'
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias restart='sudo shutdown -r now'
 alias hibernate='sudo pmset -a hibernatemode 25'
@@ -72,17 +53,12 @@ alias cloc='perl /opt/local/bin/cloc.pl'
 alias safesleep='sudo pmset -a hibernatemode 3'
 alias cleantex='rm *.aux *.log *.pdfsync'
 alias math='/Applications/Mathematica.app/Contents/MacOS/MathKernel'
-alias mv='nocorrect mv'
-alias cp='nocorrect cp'
-alias rm='nocorrect rm'
-alias which='nocorrect which'
 # Aliases with paramenters
 dropbox() {cd ~/Dropbox/"$*"; }
 hmc() {cd ~/Dropbox/Mudd/Spring\ 2014/"$*"; }
 
 setopt nobeep
 setopt noclobber
-setopt correctall
 
 # Resume in open diretory
 if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
