@@ -35,6 +35,8 @@ printf "Initializing vundle\n"
 cd $dir
 git submodule init
 git submodule update
+printf "Installing plugings\n"
+vim +PluginInstall +qa
 printf "done\n\n"
 
 printf "Cloning into oh-my-zsh\n"

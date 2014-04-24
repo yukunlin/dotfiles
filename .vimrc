@@ -1,10 +1,10 @@
 "{{{ vundle package manager
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'yukunlin/auto-pairs.git'
 Bundle 'octol/vim-cpp-enhanced-highlight.git'
 Bundle 'kien/ctrlp.vim.git'
@@ -30,7 +30,7 @@ Bundle 'nosami/Omnisharp.git'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'alisdair/vim-armasm.git'
 Bundle 'altercation/vim-colors-solarized.git'
-Bundle 'yukunlin/Vim-R-plugin.git'
+Bundle 'jcfaria/Vim-R-plugin.git'
 Bundle 'Rip-Rip/clang_complete.git'
 Bundle 'jnwhiteh/vim-golang.git'
 "}}}
@@ -111,7 +111,7 @@ autocmd FileType systemverilog source ~/.vim/sv.vim
 " Vim-R setting, when not in tmux
 let vimrplugin_term = "xterm"
 
-" map c-j and c-k to move lines up and down {{{ 
+" map c-j and c-k to move lines up and down {{{
 let g:move_key_modifier ='C'
 let g:move_select_mode = 0
 " }}}
