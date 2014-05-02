@@ -3,7 +3,7 @@
 	url = http://github.com/gmarik/vundle.git
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
-	url = http://github.com/gmarik/Vundle.vim
+	url = git@github.com:gmarik/Vundle.vim.git
 [submodule "Vundle.vim"]
 	path = Vundle.vim
 	url = git@github.com:gmarik/Vundle.vim.git
