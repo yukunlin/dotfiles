@@ -152,7 +152,7 @@ let g:tagbar_sort = 0
 let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_foldlevel = 99
 
-if executable('lushtags')
+if executable('hasktags')
     let g:tagbar_type_haskell = {
         \ 'ctagsbin'  : 'hasktags',
         \ 'ctagsargs' : '-x -c -o-',
