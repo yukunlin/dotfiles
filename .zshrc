@@ -62,14 +62,9 @@ alias cortana='ssh ylin@cortana.cs.hmc.edu'
 alias lair='ssh hmclair@lair.dreamhosters.com'
 alias ls='ls --color=always'
 alias cleantex='rm *.aux; rm *.log; rm *.pdfsync'
-alias mv='nocorrect mv'
-alias cp='nocorrect cp'
-alias rm='nocorrect rm'
-alias which='nocorrect which'
 
 setopt nobeep
 setopt noclobber
-setopt correctall
 
 # Resume in open diretory
 if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
@@ -107,3 +102,7 @@ if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
     # Tell the terminal about the initial directory.
     update_terminal_cwd
 fi
+
+export PATH=/home/ylin/.cabal/bin:$PATH
+export PATH=/cs/cs131/bin:$PATH
+export LD_LIBRARY_PATH=/home/ylin/builds/lib
