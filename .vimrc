@@ -249,7 +249,7 @@ nnoremap <leader>t :CtrlPBufTag<CR>
 nnoremap <leader>r :CtrlPMRU<CR>
 nnoremap <leader>m :CtrlPMRU<CR>
 
-let g:ctrlp_max_depth = 3
+let g:ctrlp_max_depth = 2
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_prompt_mappings = { 'PrtCurLeft()': ['<left>', '<c-^>']  }
 

@@ -40,4 +40,4 @@ vim +PluginInstall +qa
 printf "done\n\n"
 
 printf "Cloning into oh-my-zsh\n"
-git clone http://github.com/yukunlin/oh-my-zsh.git ~/.oh-my-zsh
+git clone git@github.com:yukunlin/oh-my-zsh.git ~/.oh-my-zsh
