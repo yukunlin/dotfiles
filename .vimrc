@@ -33,6 +33,7 @@ Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'jcfaria/Vim-R-plugin.git'
 Bundle 'Rip-Rip/clang_complete.git'
 Bundle 'jnwhiteh/vim-golang.git'
+Bundle 'tpope/vim-fugitive.git'
 "}}}
 
 " vim settings {{{
@@ -69,7 +70,7 @@ set nosmartindent
 set nocindent
 set autoindent
 " Ignore certain files for completion
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+set wildignore+=*/.hg/*,*/.svn/*
 
 " Tab settings
 set expandtab
@@ -106,6 +107,7 @@ set guioptions-=L
 " custom indent for tex and system verilog
 autocmd FileType tex source ~/.vim/tex.vim
 autocmd FileType systemverilog source ~/.vim/sv.vim
+autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 "}}}
 
 " Vim-R setting, when not in tmux
@@ -252,6 +254,7 @@ nnoremap <leader>m :CtrlPMRU<CR>
 let g:ctrlp_max_depth = 2
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_prompt_mappings = { 'PrtCurLeft()': ['<left>', '<c-^>']  }
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 let g:ctrlp_buftag_types = {
     \ 'armasm'        : '--language-force=asm',
