@@ -35,10 +35,11 @@ export SVN_EDITOR=vim
 # History settings
 HISTFILE=~/.history
 # Aliases
-alias knuth='ssh ylin@knuth.cs.hmc.edu'
-alias mounthex='sshfs ylin@hex.math.hmc.edu:/home/students/hmc_2015/ylin /hex/ -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=hex'
-alias mountknuth='sshfs ylin@knuth.cs.hmc.edu:/mnt/home/ylin /knuth/ -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=knuth'
-alias mountlair='sshfs hmclair@lair.dreamhosters.com:/home/hmclair/lair.dreamhosters.com/owncloud/data/lair/files/LAIR /lair -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=lair'
+alias knuth='ssh ylin@134.173.42.100'
+alias mounthex='sshfs ylin@hex.math.hmc.edu:/home/students/hmc_2015/ylin /hex/ -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=hex'
+alias mountknuth='sshfs ylin@134.173.42.100:/mnt/home/ylin /knuth/ -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=knuth'
+alias mountlair='sshfs hmclair@lair.dreamhosters.com:/home/hmclair/lair.dreamhosters.com/owncloud/data/lair/files/LAIR /lair -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=lair'
+alias knuthtunnel='daemon -X ssh\ ylin@134.173.42.100\ -ND\ 9050 -n ssh_tunnel -r'
 alias hex='ssh ylin@hex.math.hmc.edu'
 alias pex='ssh ylin@pex.math.hmc.edu'
 alias wilkes='ssh ylin@wilkes.cs.hmc.edu'

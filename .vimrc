@@ -30,10 +30,10 @@ Bundle 'nosami/Omnisharp.git'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'alisdair/vim-armasm.git'
 Bundle 'altercation/vim-colors-solarized.git'
-Bundle 'jcfaria/Vim-R-plugin.git'
 Bundle 'Rip-Rip/clang_complete.git'
 Bundle 'jnwhiteh/vim-golang.git'
 Bundle 'tpope/vim-fugitive.git'
+Bundle 'eagletmt/ghcmod-vim.git'
 "}}}
 
 " vim settings {{{
@@ -110,9 +110,6 @@ autocmd FileType systemverilog source ~/.vim/sv.vim
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 "}}}
 
-" Vim-R setting, when not in tmux
-let vimrplugin_term = "xterm"
-
 " map c-j and c-k to move lines up and down {{{
 let g:move_key_modifier ='C'
 let g:move_select_mode = 0
@@ -138,6 +135,7 @@ let g:UltiSnipsExpandTrigger = '<c-space>'
 " set assembly type to ARM
 let asmsyntax='armasm'
 let filetype_inc='armasm'
+autocmd BufNewFile,BufReadPost *.s set filetype=armasm
 
 " clang_complete settings {{{
 let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
@@ -267,6 +265,7 @@ let g:ctrlp_buftag_types = {
 "}}}
 
 " easytags settings {{{
+let g:easytags_async=1
 let g:easytags_updatetime_min=5000
 let g:easytags_updatetime_warn=0
 set tags=./.tags
