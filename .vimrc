@@ -294,7 +294,7 @@ autocmd bufread,bufnewfile *.hs,*.s silent! !touch .tags
 " vim_latex settings {{{
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode $*'
+let g:Tex_CompileRule_pdf='lualatex -interaction=nonstopmode $*'
 let g:Tex_ViewRule_pdf='skim'
 let g:Tex_FoldedSections=""
 let g:Tex_FoldedMisc="<<<"
