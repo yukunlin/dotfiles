@@ -5,36 +5,33 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'yukunlin/auto-pairs.git'
 Plugin 'octol/vim-cpp-enhanced-highlight.git'
 Plugin 'kien/ctrlp.vim.git'
 Plugin 'davidhalter/jedi-vim.git'
 Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 Plugin 'terryma/vim-multiple-cursors.git'
-Plugin 'eagletmt/neco-ghc.git'
+"Plugin 'eagletmt/neco-ghc.git'
+"Plugin 'eagletmt/ghcmod-vim.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'tpope/vim-repeat.git'
 Plugin 'ervandew/supertab.git'
 Plugin 'tpope/vim-surround.git'
 Plugin 'nachumk/systemverilog.vim.git'
 Plugin 'majutsushi/tagbar.git'
-Plugin 'SirVer/ultisnips.git'
-Plugin 'honza/vim-snippets.git'
 Plugin 'bling/vim-airline.git'
 Plugin 'xolox/vim-easytags.git'
 Plugin 'xolox/vim-misc.git'
 Plugin 'yukunlin/vim-move.git'
 Plugin 'justinmk/vim-syntax-extra.git'
 Plugin 'dag/vim2hs.git'
-Plugin 'nosami/Omnisharp.git'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'alisdair/vim-armasm.git'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'Rip-Rip/clang_complete.git'
 Plugin 'jnwhiteh/vim-golang.git'
 Plugin 'tpope/vim-fugitive.git'
-Plugin 'eagletmt/ghcmod-vim.git'
 Plugin 'vim-scripts/mips.vim'
+Plugin 'yukunlin/auto-pairs.git'
 "}}}
 
 " vim settings {{{
@@ -155,7 +152,7 @@ let g:tagbar_foldlevel = 99
 
 if executable('hasktags')
     let g:tagbar_type_haskell = {
-        \ 'ctagsbin'  : 'hasktags',
+        \ 'ctagsbin'  : '~/.cabal/bin/hasktags',
         \ 'ctagsargs' : '-x -c -o-',
         \ 'kinds'     : [
             \  'm:modules:0:1',
@@ -236,6 +233,7 @@ let g:AutoPairsShortcutFastWrap='<C-e>'
 let g:AutoPairsShortcutBackInsert='<C-b>'
 let g:AutoPairsShortcutToggle = '<F6>'
 let g:AutoPairsNormalJump=0
+let g:AutoPairsClangComplete=1
 
 " toggle autopair settings when entering tex file
 autocmd BufEnter *.tex let g:AutoPairs = {'(':')', '[':']', '{':'}'}
@@ -338,4 +336,25 @@ function StripTrailingWhitespace()
     normal `z
   endif
 endfunction
+
+function! Bclose()
+    let curbufnr = bufnr("%")
+    let altbufnr = bufnr("#")
+
+    if buflisted(altbufnr)
+        buffer #
+    else
+        bnext
+    endif
+
+    if bufnr("%") == curbufnr
+        new
+    endif
+
+    if buflisted(curbufnr)
+        execute("bdelete! " . curbufnr)
+    endif
+endfunction
+
+cabbrev bdd call Bclose()
 "}}}
