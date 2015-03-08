@@ -150,7 +150,7 @@ let g:tagbar_sort = 0
 let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_foldlevel = 99
 
-if executable('hasktags')
+if executable('~/.cabal/bin/hasktags')
     let g:tagbar_type_haskell = {
         \ 'ctagsbin'  : '~/.cabal/bin/hasktags',
         \ 'ctagsargs' : '-x -c -o-',
@@ -214,6 +214,20 @@ let g:tagbar_type_systemverilog = {
     \ 'scope2kind' : {
         \ 'typedef'   : 'e'
     \ }
+\}
+
+let g:tagbar_type_tex = {
+    \ 'ctagstype' : 'latex',
+    \ 'kinds'     : [
+        \ 's:sections',
+        \ 'u:subsections',
+        \ 't:subsubsections',
+        \ 'g:graphics:0:0',
+        \ 'l:labels',
+        \ 'r:refs:1:0',
+        \ 'p:pagerefs:1:0'
+    \ ],
+    \ 'sort'    : 0
 \}
 "}}}
 
@@ -292,7 +306,7 @@ autocmd bufread,bufnewfile *.hs,*.s silent! !touch .tags
 " vim_latex settings {{{
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_CompileRule_pdf='lualatex -interaction=nonstopmode $*'
+let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
 let g:Tex_ViewRule_pdf='skim'
 let g:Tex_FoldedSections=""
 let g:Tex_FoldedMisc="<<<"
