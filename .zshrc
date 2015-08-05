@@ -97,3 +97,15 @@ if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
     # Tell the terminal about the initial directory.
     update_terminal_cwd
 fi
+
+fd() {
+      local dir
+        dir=$(find ${1:-*} -path '*/\.*' -prune \
+                              -o -type d -print 2> /dev/null | ~/.fzf/fzf +m) &&
+                                cd "$dir"
+}
+
+# fh - repeat history
+fh() {
+      eval $( ([ -n "$ZSH_NAME"  ] && fc -l 1 || history) | ~/.fzf/fzf +s --tac | sed 's/ *[0-9]* *//' )
+}
