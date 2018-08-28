@@ -12,3 +12,5 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim
+[pull]
+	rebase = true

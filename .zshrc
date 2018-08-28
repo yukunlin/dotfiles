@@ -5,13 +5,17 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="colorful"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_first_and_last"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
-# Comment this out to disable bi-weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
+# Uncomment this out to disable bi-weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
 
 # Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
@@ -54,6 +58,10 @@ alias cloc='perl /opt/local/bin/cloc.pl'
 alias safesleep='sudo pmset -a hibernatemode 3'
 alias cleantex='rm *.aux *.log *.pdfsync'
 alias math='/Applications/Mathematica.app/Contents/MacOS/MathKernel'
+alias hl='hue lights'
+alias hg='hue groups'
+alias hs='hue scenes'
+alias hi='hue image'
 # Aliases with paramenters
 dropbox() {cd ~/Dropbox/"$*"; }
 hmc() {cd ~/Dropbox/Mudd/Spring\ 2014/"$*"; }
