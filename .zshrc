@@ -2,14 +2,16 @@ ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time ram)
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_first_and_last"
 POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='grey62'
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='grey100'
 
 DISABLE_AUTO_TITLE="true"
 
-plugins=(git z osx macports)
+plugins=(git z osx)
 
 source $ZSH/oh-my-zsh.sh
 

@@ -17,8 +17,7 @@ Plugin 'nachumk/systemverilog.vim.git'
 Plugin 'majutsushi/tagbar.git'
 Plugin 'bling/vim-airline.git'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'xolox/vim-easytags.git'
-Plugin 'xolox/vim-misc.git'
+Plugin 'yukunlin/vim-gutentags.git'
 Plugin 'yukunlin/vim-move.git'
 Plugin 'justinmk/vim-syntax-extra.git'
 Plugin 'altercation/vim-colors-solarized.git'
@@ -122,52 +121,6 @@ let Tlist_WinWidth = 30
 let g:tagbar_sort = 0
 let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_foldlevel = 99
-
-let g:tagbar_type_armasm = {
-    \ 'ctagsbin'  : 'ctags',
-    \ 'ctagsargs' : '-f- --format=2 --excmd=pattern --fields=nksSa --extra= --sort=no --language-force=asm',
-    \ 'kinds' : [
-        \ 'm:macros:0:1',
-        \ 't:types:0:1',
-        \ 'd:defines:0:1',
-        \ 'l:labels:0:1'
-    \ ]
-\}
-
-let g:tagbar_type_systemverilog = {
-    \ 'ctagsbin'  : 'ctags',
-    \ 'ctagsargs' : '-f- --format=2 --excmd=pattern --fields=nksSa --extra= --sort=no --languages=systemverilog',
-    \ 'kinds' : [
-        \ 'e:typedef:0:1',
-        \ 'i:interface:0:1',
-        \ 'c:class:0:1',
-        \ 'f:functions:0:1',
-        \ 'm:module:0:1',
-        \ 'p:program:0:1',
-        \ 't:task:0:1'
-    \ ],
-    \ 'sro'        : '.',
-    \ 'kind2scope' : {
-        \ 'e' : 'typedef'
-    \ },
-    \ 'scope2kind' : {
-        \ 'typedef'   : 'e'
-    \ }
-\}
-
-let g:tagbar_type_tex = {
-    \ 'ctagstype' : 'latex',
-    \ 'kinds'     : [
-        \ 's:sections',
-        \ 'u:subsections',
-        \ 't:subsubsections',
-        \ 'g:graphics:0:0',
-        \ 'l:labels',
-        \ 'r:refs:1:0',
-        \ 'p:pagerefs:1:0'
-    \ ],
-    \ 'sort'    : 0
-\}
 "}}}
 
 " airline setting {{{
@@ -196,42 +149,31 @@ autocmd BufLeave *.tex let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':
 " ctrlp settings {{{
 nnoremap <leader>f :CtrlP .<CR>
 nnoremap <leader>d :CtrlP
+nnoremap <leader>p :CtrlPRoot<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>t :CtrlPBufTag<CR>
-nnoremap <leader>r :CtrlPMRU<CR>
+nnoremap <leader>a :CtrlPTag<CR>
 nnoremap <leader>m :CtrlPMRU<CR>
 
-let g:ctrlp_max_depth = 2
+let g:ctrlp_max_depth = 3
+let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_prompt_mappings = { 'PrtCurLeft()': ['<left>', '<c-^>']  }
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_root_markers = ['.tags_root']
 
 let g:ctrlp_buftag_types = {
     \ 'armasm'        : '--language-force=asm',
     \ 'systemverilog' : '--language=systemverilog',
-    \ 'haskell' : {
-    \ 'bin': 'hasktags',
-    \ 'args': '-c -x -o-',
-    \},
+    \ 'objc'          : '--language=objectivec'
 \ }
 "}}}
 
-" easytags settings {{{
-let g:easytags_async=1
-let g:easytags_updatetime_min=5000
-let g:easytags_updatetime_warn=0
-set tags=./.tags
-let g:easytags_dynamic_files = 2
-let g:easytags_languages = {
-\   'armasm': {
-\     'cmd': 'ctags',
-\       'args': [],
-\       'fileoutput_opt': '-f',
-\       'stdout_opt': '-f-',
-\       'recurse_flag': '-R'
-\   }
-\}
-"}}}
+" gutentags settings {{{
+let g:gutentags_ctags_tagfile='.tags'
+"let g:gutentags_trace = 0
+set tags=./.tags,.tags
+" }}}
 
 " vim_latex settings {{{
 let g:tex_flavor='latex'
