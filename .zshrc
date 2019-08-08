@@ -41,6 +41,8 @@ alias hl='~/py-hue/hue.py lights'
 alias hg='~/py-hue/hue.py groups'
 alias hs='~/py-hue/hue.py scenes'
 alias hi='~/py-hue/hue.py image'
+alias vim='nvim'
+alias cvim='/usr/local/bin/vim'
 
 setopt nobeep
 setopt noclobber
