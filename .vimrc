@@ -19,19 +19,24 @@ Plugin 'tpope/vim-surround.git'
 Plugin 'nachumk/systemverilog.vim.git'
 Plugin 'majutsushi/tagbar.git'
 Plugin 'bling/vim-airline.git'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'yukunlin/vim-airline-themes.git'
 Plugin 'yukunlin/cscope_maps.vim.git'
 Plugin 'yukunlin/vim-gutentags.git'
-Plugin 'matze/vim-move.git'
+Plugin 'yukunlin/vim-move.git'
 Plugin 'justinmk/vim-syntax-extra.git'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'tpope/vim-fugitive.git'
+Plugin 'airblade/vim-gitgutter.git'
 Plugin 'yukunlin/auto-pairs.git'
 "}}}
 
 " vim settings {{{
 set t_RV=
 set mouse=a
+set updatetime=1000
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 
 " set manual fold for vimrc
 autocmd bufread .vimrc setlocal foldmethod=marker
@@ -59,6 +64,7 @@ set noshowcmd
 set incsearch
 set nohlsearch
 nnoremap <leader>h :set hlsearch!<CR>
+vnoremap // y/<C-R>"<CR>
 
 " Indent settings
 set nosmartindent
@@ -113,7 +119,7 @@ autocmd FileType systemverilog source ~/.vim/syntax/sv.vim
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 "}}}
 
-" map c-j and c-k to move lines up and down {{{
+" vim-move settings {{{
 let g:move_key_modifier ='C'
 let g:move_map_keys = 0
 nmap <C-k> <Plug>MoveLineUp
@@ -125,6 +131,12 @@ vmap <C-l> <Plug>MoveBlockRight
 "nmap <C-a> <Plug>MoveCharLeft
 "nmap <C-x> <Plug>MoveCharRight
 " }}}
+
+" gitgutter settings {{{
+nmap ghp <Plug>GitGutterPreviewHunk
+nmap ghs <Plug>GitGutterStageHunk
+nmap ghu <Plug>GitGutterUndoHunk
+"}}}
 
 " supertab setting {{{
 let g:SuperTabDefaultCompletionType='<c-n>'
@@ -154,6 +166,9 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline_solarized_enable_command_color = 1
+let g:airline_solarized_dark_inactive_border = 1
+let g:airline_solarized_dark_inactive_background = 1
 set laststatus=2
 set timeoutlen=1000 ttimeoutlen=10
 " shows COMMAND in status
@@ -174,6 +189,7 @@ autocmd BufLeave *.tex let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':
 " ctrlp settings {{{
 nnoremap <leader>f :CtrlPCurWD<CR>
 nnoremap <leader>c :CtrlPCurFile<CR>
+nnoremap <leader>g :CtrlPLine<CR>
 nnoremap <leader>p :CtrlPRoot<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>t :CtrlPBufTag<CR>
@@ -184,7 +200,7 @@ let g:ctrlp_max_depth = 9
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_prompt_mappings = { 'PrtCurLeft()': ['<left>', '<c-^>']  }
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 let g:ctrlp_root_markers = ['.tags_root']
 
 let g:ctrlp_buftag_types = {
@@ -198,6 +214,7 @@ let g:ctrlp_buftag_types = {
 let g:gutentags_ctags_tagfile='.tags'
 "let g:gutentags_trace = 0
 set tags=./.tags,.tags
+let g:gutentags_ctags_extra_args=['--c-kinds=+l']
 " }}}
 
 " vim_latex settings {{{
