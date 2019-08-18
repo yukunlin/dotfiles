@@ -41,7 +41,9 @@ alias hl='~/py-hue/hue.py lights'
 alias hg='~/py-hue/hue.py groups'
 alias hs='~/py-hue/hue.py scenes'
 alias hi='~/py-hue/hue.py image'
-alias vim='nvim'
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
 alias cvim='/usr/local/bin/vim'
 
 setopt nobeep

@@ -24,7 +24,11 @@ Plugin 'yukunlin/cscope_maps.vim.git'
 Plugin 'yukunlin/vim-gutentags.git'
 Plugin 'yukunlin/vim-move.git'
 Plugin 'justinmk/vim-syntax-extra.git'
-Plugin 'altercation/vim-colors-solarized.git'
+if has("gui_vimr")
+  Plugin 'frankier/neovim-colors-solarized-truecolor-only.git'
+else
+  Plugin 'altercation/vim-colors-solarized.git'
+endif
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'airblade/vim-gitgutter.git'
 Plugin 'yukunlin/auto-pairs.git'
@@ -100,14 +104,15 @@ set completeopt=menuone,longest
 
 " GUI options
 set guioptions-=r
-set guifont=Inconsolata\ for\ Powerline:h18
+if !has("gui_vimr")
+  set guifont=Inconsolata\ for\ Powerline:h18
+endif
 set guioptions-=T
 set guioptions-=L
 
 if !has("gui_running")
   " highlight in insert mode
   autocmd InsertEnter,InsertLeave * set cul!
-  " block cursor
   set gcr=a:blinkon0-block
 else
   set gcr=a:blinkon0
@@ -128,8 +133,6 @@ xmap <C-k> <Plug>MoveBlockUp
 xmap <C-j> <Plug>MoveBlockDown
 vmap <C-h> <Plug>MoveBlockLeft
 vmap <C-l> <Plug>MoveBlockRight
-"nmap <C-a> <Plug>MoveCharLeft
-"nmap <C-x> <Plug>MoveCharRight
 " }}}
 
 " gitgutter settings {{{
@@ -158,6 +161,22 @@ let Tlist_WinWidth = 30
 let g:tagbar_sort = 0
 let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_foldlevel = 99
+let g:tagbar_type_scala = {
+    \ 'ctagstype' : 'scala',
+    \ 'sro'       : '.',
+    \ 'kinds'     : [
+      \ 'p:packages',
+      \ 'T:types:1',
+      \ 't:traits',
+      \ 'o:objects',
+      \ 'O:case objects',
+      \ 'c:classes',
+      \ 'C:case classes',
+      \ 'm:methods',
+      \ 'V:values:1',
+      \ 'v:variables:1'
+    \ ]
+\ }
 "}}}
 
 " airline setting {{{
@@ -212,9 +231,7 @@ let g:ctrlp_buftag_types = {
 
 " gutentags settings {{{
 let g:gutentags_ctags_tagfile='.tags'
-"let g:gutentags_trace = 0
 set tags=./.tags,.tags
-let g:gutentags_ctags_extra_args=['--c-kinds=+l']
 " }}}
 
 " vim_latex settings {{{

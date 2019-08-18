@@ -30,6 +30,12 @@ for file in $files; do
     ln -s $dir/.$file ~/.$file
 done
 
+mkdir -p ~/.ctags.d
+ln -s $dir/.ctags ~/.ctags.d/ctags.ctags
+
+mkdir -p ~/.config
+ln -s $dir/nvim ~/.config/nvim
+
 # initalize vundle submodule
 printf "Initializing vundle\n"
 cd $dir
@@ -40,4 +46,4 @@ vim +PluginInstall +qa
 printf "done\n\n"
 
 printf "Cloning into oh-my-zsh\n"
-git clone git@github.com:robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
