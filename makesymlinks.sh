@@ -36,13 +36,10 @@ ln -s $dir/.ctags ~/.ctags.d/ctags.ctags
 mkdir -p ~/.config
 ln -s $dir/nvim ~/.config/nvim
 
-# initalize vundle submodule
-printf "Initializing vundle\n"
-cd $dir
-git submodule init
-git submodule update
 printf "Installing plugings\n"
-vim +PluginInstall +qa
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +PlugInstall +qa
 printf "done\n\n"
 
 printf "Cloning into oh-my-zsh\n"

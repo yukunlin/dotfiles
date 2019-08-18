@@ -1,37 +1,30 @@
-"{{{ vundle package manager
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+"{{{ package manager
+call plug#begin('~/.vim/plugged')
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim.git'
-Plugin 'davidhalter/jedi-vim.git'
-Plugin 'vim-python/python-syntax.git'
-Plugin 'Vimjas/vim-python-pep8-indent.git'
-Plugin 'vim-latex/vim-latex.git'
-Plugin 'terryma/vim-multiple-cursors.git'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'tpope/vim-repeat.git'
-Plugin 'tpope/vim-sleuth.git'
-Plugin 'ervandew/supertab.git'
-Plugin 'tpope/vim-surround.git'
-Plugin 'nachumk/systemverilog.vim.git'
-Plugin 'majutsushi/tagbar.git'
-Plugin 'bling/vim-airline.git'
-Plugin 'yukunlin/vim-airline-themes.git'
-Plugin 'yukunlin/cscope_maps.vim.git'
-Plugin 'yukunlin/vim-gutentags.git'
-Plugin 'yukunlin/vim-move.git'
-Plugin 'justinmk/vim-syntax-extra.git'
-if has("gui_vimr")
-  Plugin 'frankier/neovim-colors-solarized-truecolor-only.git'
-else
-  Plugin 'altercation/vim-colors-solarized.git'
-endif
-Plugin 'tpope/vim-fugitive.git'
-Plugin 'airblade/vim-gitgutter.git'
-Plugin 'yukunlin/auto-pairs.git'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'vim-python/python-syntax'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'vim-latex/vim-latex', { 'for': 'tex' }
+Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
+Plug 'nachumk/systemverilog.vim'
+Plug 'majutsushi/tagbar'
+Plug 'bling/vim-airline' | Plug 'yukunlin/vim-airline-themes'
+Plug 'yukunlin/cscope_maps.vim'
+Plug 'yukunlin/vim-gutentags'
+Plug 'matze/vim-move'
+Plug 'justinmk/vim-syntax-extra'
+Plug 'frankier/neovim-colors-solarized-truecolor-only', has('gui_vimr')  ? {} : { 'on': [] }
+Plug 'altercation/vim-colors-solarized',                !has('gui_vimr') ? {} : { 'on': [] }
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'yukunlin/auto-pairs'
+call plug#end()
 "}}}
 
 " vim settings {{{

@@ -1,2 +1,2 @@
-.vim/bundle/*
-!.vim/bundle/Vundle.vim
+.vim/autoload/plug.vim
+.vim/plugged/
